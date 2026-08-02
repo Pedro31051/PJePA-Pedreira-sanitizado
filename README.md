@@ -24,6 +24,10 @@ O serviço atual executa esta working tree por `systemd`, em
 `127.0.0.1:8001`. Não mova o checkout, altere a unidade ou reinicie produção
 sem seguir [docs/operations/deployment.md](docs/operations/deployment.md).
 
+Para operação em nuvem (Cloud Run com IP fixo de saída, Secret Manager e
+estado em GCS), use o kit de `deploy/cloudrun/` descrito em
+[docs/operations/cloudrun.md](docs/operations/cloudrun.md).
+
 Estado e credenciais vivem fora do Git:
 
 - `/var/lib/pjepa-mcp/` — sessão, armazenamento e jobs;

@@ -1,6 +1,7 @@
 .env
 .env.*
 !.env.example
+deploy/cloudrun/config.env
 __pycache__/
 *.py[cod]
 .pytest_cache/

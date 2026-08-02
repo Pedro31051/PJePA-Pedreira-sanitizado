@@ -1,0 +1,17 @@
+.git
+.gitignore
+.loop
+**/__pycache__
+**/*.pyc
+**/.pytest_cache
+**/.ruff_cache
+**/node_modules
+chrome-extension/
+docs/
+mcp-server/docs/
+mcp-server/tests/
+mcp-server/scripts/live/
+automacoes-pje/
+pje-process-agents/
+scripts/
+*.md

@@ -1,5 +1,8 @@
 # Deploy e rollback
 
+Este documento cobre a topologia local por `systemd`. Para a rota em nuvem
+(Cloud Run), ver [cloudrun.md](cloudrun.md).
+
 ## Topologia canônica
 
 Novas instalações usam releases imutáveis em
