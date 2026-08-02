@@ -1,0 +1,57 @@
+# Ambiente virtual
+venv/
+.venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Credenciais (NUNCA commitar)
+.env
+.env.*
+credenciais.json
+*.seed
+
+# Playwright
+/tmp/pje_session/
+playwright-report/
+test-results/
+
+# PDFs e documentos baixados durante debug ficam em áreas geradas conhecidas
+/tmp/processo_*
+runtime/
+outputs/
+artifacts/
+exports/
+jobs_storage/
+
+# Fixtures de teste: HTML real de autos com NOMES DE PARTES - nunca commitar
+fixtures/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.bak
+*.bak-*
+.auto-heal/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Guia de setup inicial - manter local, fora do GitHub
+COMO_SUBIR_NO_GITHUB.md

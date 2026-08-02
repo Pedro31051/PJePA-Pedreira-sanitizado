@@ -1,0 +1,15 @@
+{
+  "name": "pjepa-browser-automations",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automações locais do PJe-TJPA com leitura e mutações confirmadas",
+  "type": "commonjs",
+  "engines": {
+    "node": ">=20 <23"
+  },
+  "scripts": {
+    "check": "node scripts/check_syntax.js",
+    "test:offline": "node scripts/check_syntax.js && node --test tests/*.unit.test.js",
+    "test:live": "node tests/pje_live_smoke.js"
+  }
+}

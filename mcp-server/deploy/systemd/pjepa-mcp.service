@@ -1,0 +1,39 @@
+[Unit]
+Description=PJePA Pedreira MCP Server (Streamable HTTP)
+After=network-online.target pjepa-browser-bridge.service
+Wants=network-online.target pjepa-browser-bridge.service
+
+[Service]
+Type=simple
+User=pjepa-mcp
+Group=pjepa-mcp
+WorkingDirectory=/opt/pjepa-mcp/current/mcp-server/src
+ExecStart=/opt/pjepa-mcp/venv/bin/python /opt/pjepa-mcp/current/mcp-server/src/server.py
+Restart=always
+RestartSec=3
+Environment=PYTHONUNBUFFERED=1
+Environment=MCP_HOST=127.0.0.1
+Environment=MCP_PORT=8001
+Environment=PJE_ENV=production
+Environment=PJE_STORAGE_DIR=/var/lib/pjepa-mcp/storage
+Environment=PJE_PROFILE_DIR=/var/lib/pjepa-mcp/profile
+Environment=PJE_AUDIT_LOG=/var/log/pjepa-mcp/audit.log
+Environment=PJE_BROWSER_BRIDGE_SOCKET=/run/pjepa-mcp/browser.sock
+EnvironmentFile=-/etc/pjepa-mcp/runtime.env
+LoadCredentialEncrypted=cpf:/etc/credstore.encrypted/pjepa-mcp/cpf.cred
+LoadCredentialEncrypted=senha:/etc/credstore.encrypted/pjepa-mcp/senha.cred
+LoadCredentialEncrypted=totp_seed:/etc/credstore.encrypted/pjepa-mcp/totp_seed.cred
+LoadCredentialEncrypted=audit_master_key:/etc/credstore.encrypted/pjepa-mcp/audit_master_key.cred
+UMask=0077
+RuntimeDirectory=pjepa-mcp
+RuntimeDirectoryMode=0700
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=/var/lib/pjepa-mcp /var/log/pjepa-mcp
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

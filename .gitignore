@@ -1,0 +1,34 @@
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+node_modules/
+automacoes-pje/browser_config.local.js
+venv/
+.venv/
+*.log
+*.tmp
+.DS_Store
+
+# Artefatos de orquestração de agentes / auto-heal — processo, não produto
+.agents/
+.loop/
+
+# Estado e saídas operacionais — nunca pertencem ao repositório
+runtime/
+outputs/
+artifacts/
+coverage/
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+# Exports gerados devem ficar somente nestes diretórios
+mcp-server/exports/
+mcp-server/runtime/
+mcp-server/outputs/
+mcp-server/artifacts/
+mcp-server/jobs_storage/

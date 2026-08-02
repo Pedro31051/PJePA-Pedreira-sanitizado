@@ -1,0 +1,22 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "inventory_opening_and_appointment",
+      "prompt": {
+        "role": "user",
+        "parts": [{
+          "text": "Analise este inventário ato a ato com provas exatas. DOSSIÊ_JSON={\"process_number\":\"0000000-00.2025.8.14.0000\",\"class\":\"Inventário\",\"documents\":[{\"document_id\":\"doc-1\",\"date\":\"2025-01-10\",\"sha256\":\"5cc59fae9bc5a1e51b46bf1f978a48c981a05a57c2715b872c041ce969e238aa\",\"pages\":[{\"page\":1,\"text\":\"Em 10 de janeiro de 2025, ANA requereu a abertura do inventário de JOÃO, juntando certidão de óbito datada de 02 de janeiro de 2025.\"}]},{\"document_id\":\"doc-2\",\"date\":\"2025-01-20\",\"sha256\":\"0764147f692d3b60a13013001589757530141b3053db2451974c75493a0a8120\",\"pages\":[{\"page\":1,\"text\":\"Em 20 de janeiro de 2025, o juízo nomeou ANA inventariante e determinou a apresentação das primeiras declarações.\"}]}]}"
+        }]
+      }
+    },
+    {
+      "eval_case_id": "inventory_minor_and_mp",
+      "prompt": {
+        "role": "user",
+        "parts": [{
+          "text": "Analise o inventário e identifique a intervenção do MP sem inventar dados. DOSSIÊ_JSON={\"process_number\":\"1111111-11.2025.8.14.0000\",\"class\":\"Inventário\",\"documents\":[{\"document_id\":\"doc-a\",\"date\":\"2025-02-01\",\"sha256\":\"f8ecfa2ab71d7b8b708ae386a0f568ed5b5ca75c789f7f424bb091ecd2d817a7\",\"pages\":[{\"page\":1,\"text\":\"A petição informa que o herdeiro PEDRO tem 12 anos e está representado por sua mãe MARIA.\"}]},{\"document_id\":\"doc-b\",\"date\":\"2025-02-15\",\"sha256\":\"ddcc9cc2afd0bb7f76c3f6b9f02fcbc66fbb20e0a43a3f09b470b9156b1c6bf7\",\"pages\":[{\"page\":1,\"text\":\"Após as primeiras declarações, o juízo determinou a intimação do Ministério Público em razão do herdeiro incapaz.\"}]}]}"
+        }]
+      }
+    }
+  ]
+}

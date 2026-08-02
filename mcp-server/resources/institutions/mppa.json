@@ -1,0 +1,12 @@
+{
+  "id": "mppa",
+  "nome": "MINISTÉRIO PÚBLICO DO ESTADO DO PARÁ",
+  "sigla": "MPPA",
+  "cnpj": "05.054.960/0001-58",
+  "cnpj_digitos": "05054960000158",
+  "verificado_em": "2026-08-01",
+  "fontes_oficiais": [
+    "https://www.mppa.mp.br/data/files/FE/76/0D/C2/5C80191002E18109180808FF/PE%20019-2024%20-%20Edital%20RP%20SERV%20FABRICANTE%20MICROSOFT%20-%20p%20assinatura%20-%20assinado.pdf",
+    "https://www.gov.br/cgu/pt-br/acesso-a-informacao/acordos-de-cooperacao-tecnica/acordos-de-cooperacao-tecnica"
+  ]
+}

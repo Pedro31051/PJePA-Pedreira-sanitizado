@@ -1,0 +1,9 @@
+metrics_to_run:
+  - evidence_integrity
+  - custom_response_quality
+
+custom_metrics:
+  - name: evidence_integrity
+    custom_function_file: evidence_integrity.py
+  - name: custom_response_quality
+    custom_function_file: response_quality.py

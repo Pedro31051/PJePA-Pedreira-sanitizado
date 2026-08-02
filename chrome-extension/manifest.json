@@ -1,0 +1,36 @@
+{
+  "manifest_version": 3,
+  "name": "PJe Assistente - Analisador Sem Download",
+  "version": "1.0",
+  "description": "Extrai o texto dos autos ativos do PJe diretamente do navegador e envia para o MCP de forma instantânea.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
+  "host_permissions": [
+    "*://*.tjpa.jus.br/*",
+    "http://127.0.0.1:8001/*",
+    "http://localhost:8001/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["*://*.tjpa.jus.br/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "icons": {
+    "16": "assets/icon.png",
+    "32": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon.png",
+      "32": "assets/icon.png"
+    }
+  }
+}

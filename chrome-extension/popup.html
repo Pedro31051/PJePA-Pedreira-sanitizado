@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      width: 320px;
+      margin: 0;
+      padding: 16px;
+      background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+      color: #f8fafc;
+    }
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid #334155;
+      padding-bottom: 12px;
+      margin-bottom: 16px;
+    }
+    .logo {
+      font-size: 20px;
+      font-weight: 800;
+      background: linear-gradient(to right, #38bdf8, #818cf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .badge {
+      background: rgba(56, 189, 248, 0.15);
+      color: #38bdf8;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+    }
+    .card {
+      background: rgba(30, 41, 59, 0.7);
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+    }
+    .label {
+      font-size: 11px;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 4px;
+    }
+    .value {
+      font-size: 14px;
+      font-weight: 600;
+      color: #f1f5f9;
+    }
+    .btn {
+      width: 100%;
+      background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+    }
+    .btn:hover:not(:disabled) {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      transform: translateY(-1px);
+    }
+    .btn:disabled {
+      background: #475569;
+      color: #94a3b8;
+      box-shadow: none;
+      cursor: not-allowed;
+    }
+    .log-box {
+      font-family: 'Courier New', monospace;
+      font-size: 11px;
+      background: #020617;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 10px;
+      height: 100px;
+      overflow-y: auto;
+      margin-top: 16px;
+      display: none;
+    }
+    .log-entry {
+      margin-bottom: 4px;
+      line-height: 1.4;
+    }
+    .log-info { color: #38bdf8; }
+    .log-success { color: #4ade80; }
+    .log-error { color: #f87171; }
+    .config-input {
+      width: 100%;
+      box-sizing: border-box;
+      margin-top: 4px;
+      padding: 7px;
+      border: 1px solid #475569;
+      border-radius: 6px;
+      background: #0f172a;
+      color: #f8fafc;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <span class="logo">PJe Assist</span>
+    <span class="badge">V3 Ext</span>
+  </div>
+  
+  <div class="card">
+    <div class="label">Processo CNJ</div>
+    <div id="cnj-val" class="value">Detectando...</div>
+  </div>
+
+  <div class="card">
+    <div class="label">Servidor local</div>
+    <input id="endpoint" class="config-input" value="http://127.0.0.1:8001" />
+    <div class="label" style="margin-top: 10px">Token opcional</div>
+    <input id="token" class="config-input" type="password" autocomplete="off" />
+  </div>
+
+  <div class="card">
+    <div class="label">Peças Identificadas</div>
+    <div id="pecas-val" class="value">0 encontradas</div>
+  </div>
+
+  <button id="analisar-btn" class="btn" disabled>Analisar via MCP</button>
+
+  <div id="log" class="log-box"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

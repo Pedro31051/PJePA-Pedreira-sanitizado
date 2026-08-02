@@ -1,0 +1,15 @@
+[Unit]
+Description=PJePA - sincronização e materialização diária do acervo
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=pjepa-mcp
+Group=pjepa-mcp
+WorkingDirectory=/opt/pjepa-mcp/current/mcp-server
+EnvironmentFile=-/etc/pjepa-mcp/acervo-diario.env
+ExecStart=/opt/pjepa-mcp/venv/bin/python /opt/pjepa-mcp/current/mcp-server/src/jobs_acervo.py --modo incremental
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true

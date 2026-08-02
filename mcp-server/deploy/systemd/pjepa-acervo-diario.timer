@@ -1,0 +1,11 @@
+[Unit]
+Description=PJePA - agenda diária do acervo em dias úteis
+
+[Timer]
+OnCalendar=Mon..Fri *-*-* 06:30:00 America/Belem
+Persistent=true
+RandomizedDelaySec=120
+Unit=pjepa-acervo-diario.service
+
+[Install]
+WantedBy=timers.target

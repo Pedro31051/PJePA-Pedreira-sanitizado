@@ -1,0 +1,29 @@
+[Unit]
+Description=PJePA Playwright Browser Bridge
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=pjepa-mcp
+Group=pjepa-mcp
+WorkingDirectory=/opt/pjepa-mcp/current/automacoes-pje
+ExecStart=/usr/bin/node /opt/pjepa-mcp/current/automacoes-pje/pje_browser_bridge.js
+Restart=always
+RestartSec=3
+Environment=NODE_ENV=production
+Environment=PJE_BROWSER_BRIDGE_SOCKET=/run/pjepa-mcp/browser.sock
+Environment=PJE_STORAGE_DIR=/var/lib/pjepa-mcp/storage
+EnvironmentFile=-/etc/pjepa-mcp/browser.env
+RuntimeDirectory=pjepa-mcp
+RuntimeDirectoryMode=0700
+UMask=0077
+NoNewPrivileges=true
+ProtectHome=read-only
+ProtectSystem=strict
+ReadWritePaths=/var/lib/pjepa-mcp /run/pjepa-mcp
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

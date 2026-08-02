@@ -1,0 +1,65 @@
+{
+  "schema_version": "pje.official-corpus/v1",
+  "corpus_version": "v1-2026-08-02",
+  "data_store_id": "projects/your-gcp-project-id/locations/global/collections/default_collection/dataStores/pje-official-knowledge_documents",
+  "bucket": "gs://your-gcp-bucket",
+  "retrieval_smoke_test": {
+    "query": "prazo para primeiras declaracoes no inventario",
+    "results": 3,
+    "top_result": "official/cpc_inventario_partilha.txt",
+    "tested_at": "2026-08-02"
+  },
+  "documents": [
+    {
+      "object": "official/cpc_inventario_partilha.txt",
+      "authority": "CPC",
+      "source_url": "https://legis.senado.leg.br/norma/584917/publicacao/34619046",
+      "generation": "1785681823119826",
+      "size_bytes": 1659,
+      "md5_base64": "tLgnMv0rrQlAnM28h9B0PQ==",
+      "created": "2026-08-02T14:43:43Z"
+    },
+    {
+      "object": "official/cnj_resolucao_35_compilada.html",
+      "authority": "CNJ",
+      "source_url": "https://atos.cnj.jus.br/atos/detalhar/atos-normativos?documento=179",
+      "generation": "1785681824607827",
+      "size_bytes": 54325,
+      "md5_base64": "jRCHh1LWhEYIGXYFBK7rhg==",
+      "created": "2026-08-02T14:43:44Z"
+    },
+    {
+      "object": "official/cnj_resolucao_571_2024.html",
+      "authority": "CNJ",
+      "source_url": "https://atos.cnj.jus.br/atos/detalhar/5705",
+      "generation": "1785681824935300",
+      "size_bytes": 22898,
+      "md5_base64": "E0NIC4+rLT0Ml93TMqqIYw==",
+      "created": "2026-08-02T14:43:44Z"
+    },
+    {
+      "object": "official/tjpa_codigo_normas_extrajudicial.txt",
+      "authority": "TJPA",
+      "source_url": "https://www.tjpa.jus.br/CMSPortal/VisualizarArquivo?idArquivo=1250586",
+      "generation": "1785681826162525",
+      "size_bytes": 1246,
+      "md5_base64": "4wt6GlCgqXWnMewmeUQr1A==",
+      "created": "2026-08-02T14:43:46Z"
+    },
+    {
+      "object": "official/para_legislacao_itcd.txt",
+      "authority": "PARA_LEGISLACAO",
+      "source_url": "https://www.sistemas.pa.gov.br/sisleis/legislacao/4878",
+      "generation": "1785681841522427",
+      "size_bytes": 1115,
+      "md5_base64": "1ydKYRayeqcVwCIQdeQyIQ==",
+      "created": "2026-08-02T14:44:01Z"
+    }
+  ],
+  "update_policy": [
+    "Atualizar objeto = novo upload no bucket + nova entrada de generation aqui + reimporte no data store.",
+    "Nunca apagar generations antigas do manifesto: elas registram qual versão normativa cada análise usou.",
+    "Os arquivos .txt pequenos (CPC, TJPA, ITCD) são extratos; expandir para o texto integral oficial na v2.",
+    "Toda fonte nova deve constar de OFFICIAL_SOURCES em app/official_sources.py e da allowlist de hosts do verificador."
+  ]
+}

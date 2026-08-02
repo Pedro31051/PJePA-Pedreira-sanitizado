@@ -1,0 +1,37 @@
+{
+  "sources": [
+    {
+      "id": "cpc_inventario_partilha",
+      "authority": "CPC",
+      "url": "https://www.planalto.gov.br/ccivil_03/_ato2015-2018/2015/lei/l13105.htm",
+      "content_type": "text/html",
+      "fallback_path": "sources/cpc_inventario_partilha.md"
+    },
+    {
+      "id": "cnj_resolucao_35_compilada",
+      "authority": "CNJ",
+      "url": "https://atos.cnj.jus.br/atos/detalhar/atos-normativos?documento=179",
+      "content_type": "text/html"
+    },
+    {
+      "id": "cnj_resolucao_571_2024",
+      "authority": "CNJ",
+      "url": "https://atos.cnj.jus.br/atos/detalhar/5705",
+      "content_type": "text/html"
+    },
+    {
+      "id": "tjpa_codigo_normas_extrajudicial",
+      "authority": "TJPA",
+      "url": "https://www.tjpa.jus.br/CMSPortal/VisualizarArquivo?idArquivo=1250586",
+      "content_type": "application/pdf",
+      "fallback_path": "sources/tjpa_codigo_normas_indice.md"
+    },
+    {
+      "id": "para_legislacao_itcd",
+      "authority": "PARA_LEGISLACAO",
+      "url": "https://www.sistemas.pa.gov.br/sisleis/legislacao/4878",
+      "content_type": "text/html",
+      "fallback_path": "sources/para_itcd.md"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+[Service]
+# Mantém o MCP geral disponível se o arquivo ainda não foi instalado.
+# A auditoria continua fail-closed enquanto PJE_TASK_POLICY_PATH estiver ausente.
+EnvironmentFile=-/etc/pjepa-mcp/auditoria-familia-maraba.env
+UMask=0077

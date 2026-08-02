@@ -1,0 +1,92 @@
+{
+  "schema_version": "pje.task-policy/v1",
+  "bundle_id": "fd801d4d-48cc-4bd2-8dd3-5e61ebc44d33",
+  "version": "familia-maraba-draft-0",
+  "generated_at": "2026-07-27T00:00:00Z",
+  "governance": {
+    "approval_status": "draft",
+    "activation_prohibited": true,
+    "notice": "Modelo técnico. Não use em produção sem aprovação institucional e regras baseadas em fontes vigentes."
+  },
+  "tasks": [
+    {
+      "id": "task.verificar_providencia",
+      "canonical_name": "Verificar providência a adotar",
+      "aliases": [
+        "Providências a adotar",
+        "Verificar providencias a adotar",
+        "Providencias a adotar"
+      ],
+      "flow_type": "familia_maraba",
+      "allowed_destination_ids": [],
+      "mutually_exclusive_with": []
+    }
+  ],
+  "sources": [
+    {
+      "id": "source.familia-maraba.draft",
+      "title": "Rascunho técnico de triagem — aguarda aprovação institucional",
+      "kind": "unit_playbook_draft",
+      "uri": "urn:pjepa:task-policy:familia-maraba:draft",
+      "version": "draft-0",
+      "valid_from": "2026-07-27",
+      "valid_until": null,
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "authority_priority": 0
+    }
+  ],
+  "rules": [
+    {
+      "id": "rule.familia-maraba.verificar-providencia.manual-review",
+      "scope": {
+        "tribunal": "TJPA",
+        "environment": "first_degree",
+        "orgao_julgador_id": "916",
+        "unit_canonical_segment": "Vara de Família, Sucessões e Registros Públicos de Marabá",
+        "unit_aliases": [
+          "Vara de Família"
+        ],
+        "unit_pattern": "^Vara de Família, Sucessões e Registros Públicos de Marabá$",
+        "role_pattern": "^Diretor de Secretaria$",
+        "case_class_codes": [],
+        "flow_types": [
+          "familia_maraba"
+        ]
+      },
+      "current_task_id": "task.verificar_providencia",
+      "allowed_destination_ids": [],
+      "required_conditions": [
+        {
+          "fact": "operative_order_reference",
+          "operator": "exists"
+        }
+      ],
+      "blocking_conditions": [],
+      "evidence_requirements": [
+        {
+          "fact": "operative_order_reference",
+          "minimum_count": 1,
+          "required": true
+        }
+      ],
+      "next_acts": [
+        {
+          "id": "act.manual-review",
+          "sequence": 1,
+          "label": "Revisão humana obrigatória do ato e da caixa",
+          "responsible_role": "Equipe revisora designada",
+          "precondition": "Referência citável a comando processual",
+          "expected_effect": "Decisão humana documentada; nenhuma movimentação automática"
+        }
+      ],
+      "source_ids": [
+        "source.familia-maraba.draft"
+      ],
+      "priority": 100,
+      "status": "draft",
+      "outcome": "review",
+      "valid_from": "2026-07-27",
+      "valid_until": "2026-08-26"
+    }
+  ]
+}
