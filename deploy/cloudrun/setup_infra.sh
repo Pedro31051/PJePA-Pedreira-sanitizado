@@ -22,6 +22,10 @@ INVOKER_SA="${INVOKER_SA_ID}@${PROJECT_ID}.iam.gserviceaccount.com"
 
 echo "Projeto: ${PROJECT_ID} | Região: ${REGION} | Config: ${config}"
 if [[ "${1:-}" != "--yes" ]]; then
+    if [[ ! -t 0 ]]; then
+        echo "Sem terminal interativo: rode com --yes para confirmar o provisionamento." >&2
+        exit 1
+    fi
     read -rp "Provisionar (inclui IP estático e Cloud NAT, cobrados por hora)? [s/N] " resp
     [[ "$resp" =~ ^[sS]$ ]] || { echo "Abortado."; exit 1; }
 fi
@@ -103,20 +107,36 @@ segredo_existe() {
     gcloud secrets describe "$1" --project "$PROJECT_ID" >/dev/null 2>&1
 }
 
+# Sem terminal interativo, os segredos digitáveis são criados vazios e o valor
+# é preenchido depois no Console (Secret Manager → nova versão), para que
+# nenhuma credencial transite por histórico de shell ou logs de sessão.
+SEGREDOS_PENDENTES=()
+
 criar_segredo() {
     local nome="$1" rotulo="$2" valor
     if segredo_existe "$nome"; then
+        if ! gcloud secrets versions list "$nome" --project "$PROJECT_ID" \
+            --limit 1 --format 'value(name)' | grep -q .; then
+            SEGREDOS_PENDENTES+=("${nome} — ${rotulo}")
+        fi
         echo "segredo ${nome} já existe; mantido"
         return
     fi
     if [[ "$nome" == "${SECRET_PREFIX}-audit-master-key" ]]; then
         valor="$(python3 -c 'import base64, os; print(base64.urlsafe_b64encode(os.urandom(32)).decode())')"
         echo "audit_master_key gerada automaticamente (32 bytes, base64 urlsafe)"
-    else
+    elif [[ -t 0 ]]; then
         read -rsp "Valor para ${rotulo} (não ecoa): " valor
         echo
+        [[ -n "$valor" ]] || { echo "valor vazio para ${nome}" >&2; exit 1; }
+    else
+        gcloud secrets create "$nome" \
+            --project "$PROJECT_ID" \
+            --replication-policy user-managed --locations "$REGION"
+        SEGREDOS_PENDENTES+=("${nome} — ${rotulo}")
+        echo "segredo ${nome} criado SEM valor; preencher no Console"
+        return
     fi
-    [[ -n "$valor" ]] || { echo "valor vazio para ${nome}" >&2; exit 1; }
     printf '%s' "$valor" | gcloud secrets create "$nome" \
         --project "$PROJECT_ID" \
         --replication-policy user-managed --locations "$REGION" \
@@ -141,4 +161,11 @@ ip_saida="$(gcloud compute addresses describe "$NAT_IP_NAME" \
 echo
 echo "Infraestrutura pronta."
 echo "IP estático de saída (para eventual whitelist junto ao TJPA): ${ip_saida}"
+if ((${#SEGREDOS_PENDENTES[@]})); then
+    echo
+    echo "ATENÇÃO — segredos sem valor (o deploy falha até preenchê-los):"
+    printf '  - %s\n' "${SEGREDOS_PENDENTES[@]}"
+    echo "Preencha no navegador: console.cloud.google.com → projeto ${PROJECT_ID}"
+    echo "→ busque 'Secret Manager' → clique no segredo → 'Nova versão' → cole o valor."
+fi
 echo "Próximo passo: ./deploy.sh"
